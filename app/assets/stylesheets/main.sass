@@ -1,0 +1,134 @@
+@import "bourbon"
+@mixin reset
+  margin: 0
+  padding: 0
+
+@mixin padding-fix
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+
+@font-face
+  font-family: "OpenSans"
+  src: url("/assets/OpenSansRegular.ttf")
+
+@font-face
+  font-family: "icomoon"
+  src: url("/assets/icomoon.eot")
+  src: url("/assets/icomoon.eot?#iefix") format("embedded-opentype")
+  src: url("/assets/icomoon.woff") format("woff")
+  src: url("/assets/icomoon.ttf") format("truetype")
+  src: url("/assets/icomoon.svg#icomoon") format("svg")
+
+$main_color: #444
+
+.icon
+  font-family: "icomoon"
+body
+  font-family: "OpenSans"
+  +reset
+  color: #555
+  header
+    +linear-gradient($main_color, darken($main_color, 10%))
+    height: 80px
+    padding: 26px 0
+    text-align: center
+    +padding-fix
+    h1
+      color: #fff
+      text-shadow: 1px 1px 1px #000
+      +reset
+      font-size: 1.4em
+  nav
+    +linear-gradient(#eee, #ddd)
+    border: #ccc solid 1px
+    border-top: none
+    width: 100%
+    overflow: auto
+    ul
+      padding: 4px 0 0 0
+      height: 30px
+      margin: 0 0 0 20px
+      +padding-fix
+      float: left
+      li
+        +reset
+        margin-right: 20px
+        float: left
+        list-style: none
+        color: #777
+    form
+      float: right
+      margin-right: 10px
+      padding-top: 3px
+      input
+        +reset
+        +padding-fix
+        height: 25px
+        border: 1px #ccc solid
+        padding: 2px
+        outline: none
+      input[type="submit"]
+        +linear-gradient($main_color, darken($main_color, 10%))
+        color: white
+        border-radius: 0 10px 10px 0
+        border: none
+        width: 31px
+        font-size: .7em
+  #wrapper
+    width: 900px
+    margin: 0 auto
+    section#content
+      float: left
+      width: 75%
+      h1
+        border-bottom: 1px dashed #ccc
+        width: 95%
+        padding: 10px 0 5px 5px
+        margin: 0 0 10px 0
+      ul
+        +reset
+        li
+          list-style: none
+          padding: 0 10px 10px
+    aside
+      width: 25%
+      float: left
+      +padding-fix
+      span.icon
+        margin-right: 10px
+      h3
+        +linear-gradient($main_color, darken($main_color, 10%))
+        color: white
+        font-size: .9em
+        text-align: center
+        +reset
+        padding: 5px 0
+        margin-top: 20px
+      section
+        border: 1px solid #ccc
+        border-top: none
+        p
+          border-bottom: 1px solid #ccc
+          +reset
+          padding: 4px 0
+          text-align: center
+          width: 90%
+          margin-left: 5%
+          font-size: .9em
+        p:last-of-type
+          border: none
+    footer
+      background: #eee
+      border-radius: 8px 8px 0 0
+      height: 40px
+      border: #ccc solid 1px
+      border-bottom: none
+      padding-top: 10px
+      +padding-fix
+      position: absolute
+      bottom: 0
+      width: 900px
+      p
+        +reset
+        text-align: center
+        color: #999
