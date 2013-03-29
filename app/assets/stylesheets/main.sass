@@ -127,6 +127,7 @@ body
     section#content
       float: left
       font-size: .9em
+      width: 620px
       ul, p
         +reset
       h1
@@ -136,12 +137,13 @@ body
           @extend .textbox
         textarea
           height: 300px
+        p
+          text-align: right
       ul
         li 
           list-style: none
           padding: 12px 8px
           border-bottom: 1px dashed #ccc
-          width: 620px
           a 
             color: black
             text-decoration: none

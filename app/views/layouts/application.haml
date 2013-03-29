@@ -35,8 +35,10 @@
               - session[:cart].each do  |cart_item|
                 %li
                   %b
-                    = cart_item[:quantity]
-                  = cart_item[:product].title
+                    = cart_item.quantity
+                  = cart_item.product.title
+              %li
+                = link_to "Checkout", checkout_path
                 
       %section#content
         = yield
