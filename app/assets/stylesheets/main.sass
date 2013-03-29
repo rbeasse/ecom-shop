@@ -9,7 +9,7 @@
   padding: 0
   margin: 0
 
-$main_color: #20A438
+$main_color: #207CA4
 
 @mixin main_gradient
   +linear-gradient($main_color, darken($main_color, 10%))
@@ -118,6 +118,10 @@ body
               text-decoration: none
             a:hover
               text-decoration: underline
+            b
+              padding: 0 2px 0 5px
+              background: lighten($main_color, 55%)
+              margin-right: 5px
           li:last-of-type
             border: none
     section#content

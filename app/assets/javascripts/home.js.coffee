@@ -13,4 +13,5 @@ $(document).ready ->
 	$(".search").blur ->
 		$(this).fadeOut('fast', ->
 			$("#search_button").show())
+
 		
