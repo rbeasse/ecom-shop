@@ -7,4 +7,4 @@
 		- if product.quantity < 1 
 			Out of stock
 		- else
-			Add to cart
+			= link_to "Add to cart", to_cart_path(id: product), :method=> :post

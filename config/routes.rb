@@ -1,19 +1,8 @@
 EcomShop::Application.routes.draw do
   
-  get "order/cart"
-
-  get "order/checkout"
-
-  get "order/invoice"
-
-  get "store/index"
-
+  match "order/to_cart" => "order#to_cart", as: :to_cart
   match "store/category/:id" => "store#category", as: :category
   match "store/search/" => "store#search", as: :search, via: :post
-
-  get "store/view"
-
-  get "home/index"
 
   ActiveAdmin.routes(self)
 
