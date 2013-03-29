@@ -1,134 +1,155 @@
-@import "bourbon"
+// Awesome
+
+@import 'bourbon'
+
+@include font-face(OpenSansRegular, "/assets/OpenSans-Regular-webfont")
+@include font-face(IcoMoon, "/assets/icomoon")
+
 @mixin reset
-  margin: 0
   padding: 0
+  margin: 0
 
-@mixin padding-fix
-  box-sizing: border-box
-  -moz-box-sizing: border-box
+$main_color: #20A438
 
-@font-face
-  font-family: "OpenSans"
-  src: url("/assets/OpenSansRegular.ttf")
-
-@font-face
-  font-family: "icomoon"
-  src: url("/assets/icomoon.eot")
-  src: url("/assets/icomoon.eot?#iefix") format("embedded-opentype")
-  src: url("/assets/icomoon.woff") format("woff")
-  src: url("/assets/icomoon.ttf") format("truetype")
-  src: url("/assets/icomoon.svg#icomoon") format("svg")
-
-$main_color: #444
+@mixin main_gradient
+  +linear-gradient($main_color, darken($main_color, 10%))
 
 .icon
-  font-family: "icomoon"
+  font-family: "IcoMoon"
+.button
+  float: right
+  cursor: pointer
+  +main_gradient
+  color: white
+  font-weight: bold
+  border: none
+  text-shadow: 0px -1px 0px black
+  border-radius: 5px
+  padding: 8px 20px
+
+.textbox
+  width: 100%
+  padding: 8px
+  +box-sizing(border-box)
+  border: 1px solid #ccc
+  font: inherit
+  margin-bottom: 5px
+  border-radius: 5px
+  outline: none
+
 body
-  font-family: "OpenSans"
   +reset
-  color: #555
+  font-family: "OpenSansRegular"
   header
-    +linear-gradient($main_color, darken($main_color, 10%))
-    height: 80px
-    padding: 26px 0
-    text-align: center
-    +padding-fix
-    h1
-      color: #fff
-      text-shadow: 1px 1px 1px #000
-      +reset
-      font-size: 1.4em
-  nav
-    +linear-gradient(#eee, #ddd)
-    border: #ccc solid 1px
-    border-top: none
-    width: 100%
+    +main_gradient
     overflow: auto
-    ul
-      padding: 4px 0 0 0
-      height: 30px
-      margin: 0 0 0 20px
-      +padding-fix
+    height: 40px
+    h1
+      +reset
       float: left
-      li
+      color: white
+      padding: 6px 0 0 25px
+      font-size: 1.2em
+      text-shadow: 0px -1px 0px black
+    ul 
+      +reset
+      margin-left: 40px
+      float: left
+      li 
         +reset
-        margin-right: 20px
         float: left
         list-style: none
-        color: #777
+        padding-top: 7px
+        a 
+          color: white
+          padding: 10px 25px
+          text-decoration: none
+          font-size: .9em
+          text-shadow: 0px -1px 0px black
+        a.current
+          background: darken($main_color, 10%)
     form
       float: right
-      margin-right: 10px
-      padding-top: 3px
-      input
-        +reset
-        +padding-fix
-        height: 25px
-        border: 1px #ccc solid
-        padding: 2px
-        outline: none
-      input[type="submit"]
-        +linear-gradient($main_color, darken($main_color, 10%))
-        color: white
-        border-radius: 0 10px 10px 0
+      padding: 6px 8px 0 0
+      input[type="text"]
+        @extend .textbox
+        height: 27px
         border: none
-        width: 31px
-        font-size: .7em
-  #wrapper
-    width: 900px
+        box-shadow: 0px -1px 0px #ccc
+        font-size: .9em
+  div#wrapper
     margin: 0 auto
+    width: 900px
+    overflow: auto
+    aside
+      float: left
+      width: 250px
+      margin-top: 15px
+      section#aside_box
+        margin: 10px 30px
+        border: 1px solid #ccc
+        padding: 1px
+        h3
+          text-align: center
+          color: white
+          font-size: .9em
+          +reset
+          +main_gradient
+          text-shadow: 0px -1px 0px black
+          padding: 5px 0
+        ul
+          +reset
+          li
+            list-style: none
+            border-bottom: 1px #ccc dashed
+            padding: 5px
+            font-size: .9em
+            a
+              font-weight: bold
+              color: black
+              text-decoration: none
+            a:hover
+              text-decoration: underline
+          li:last-of-type
+            border: none
     section#content
       float: left
-      width: 75%
+      font-size: .9em
+      ul, p
+        +reset
       h1
-        border-bottom: 1px dashed #ccc
-        width: 95%
-        padding: 10px 0 5px 5px
-        margin: 0 0 10px 0
+        margin-bottom: 10px
+      form
+        input, textarea
+          @extend .textbox
+        textarea
+          height: 300px
       ul
-        +reset
-        li
+        li 
           list-style: none
-          padding: 0 10px 10px
-    aside
-      width: 25%
-      float: left
-      +padding-fix
-      span.icon
-        margin-right: 10px
-      h3
-        +linear-gradient($main_color, darken($main_color, 10%))
-        color: white
-        font-size: .9em
-        text-align: center
-        +reset
-        padding: 5px 0
-        margin-top: 20px
-      section
-        border: 1px solid #ccc
-        border-top: none
-        p
-          border-bottom: 1px solid #ccc
-          +reset
-          padding: 4px 0
-          text-align: center
-          width: 90%
-          margin-left: 5%
-          font-size: .9em
-        p:last-of-type
+          padding: 12px 8px
+          border-bottom: 1px dashed #ccc
+          width: 620px
+          a 
+            color: black
+            text-decoration: none
+          a:hover
+            text-decoration: underline
+          .links
+            float: right
+
+        li:last-of-type
           border: none
     footer
+      +position(fixed, 0 0px 0px 0px)
       background: #eee
-      border-radius: 8px 8px 0 0
-      height: 40px
-      border: #ccc solid 1px
-      border-bottom: none
-      padding-top: 10px
-      +padding-fix
-      position: absolute
-      bottom: 0
-      width: 900px
+      border-top: 1px #ccc solid
+      color: #ccc
+      text-align: center
       p
-        +reset
-        text-align: center
-        color: #999
+        text-shadow: 0px -1px 0px #999
+        padding: 8px
+        margin: 0
+        font-size: .8em
+
+

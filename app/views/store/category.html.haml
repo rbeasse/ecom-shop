@@ -1,0 +1,6 @@
+%h1= @category.title
+%ul
+	- if @products.empty?
+		%li Uh oh, looks like we don't have any of these items for sale at this time.
+	- else
+		= render @products

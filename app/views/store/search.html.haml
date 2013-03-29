@@ -1,0 +1,8 @@
+%h1= "Results for '#{@product_searched_for}'"
+
+%ul
+	- unless @products.empty?
+		= render @products
+	- else
+		%li
+			%p Nothing found.

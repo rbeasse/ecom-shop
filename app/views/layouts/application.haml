@@ -8,35 +8,36 @@
   = csrf_meta_tags
   %body
     %header
-      %h1 Compuzza Computers
-    %nav
-      %ul
-        %li wazup
-        %li home
-        %li hotdogs
-        %li cool
-      = form_tag search_path, :method => :post do
-        = text_field_tag :query, "", {placeholder: "Search", class: "search"}
-        = submit_tag "L", {class: "icon"}
+      %h1 Compuzza
+      %nav
+        %ul
+          %li= link_to "Shop", "#"
+          %li= link_to "About Us", "#", class: "current"
+          %li= link_to "Contact", "#"
+        = form_tag search_path, :method => :post do
+          = text_field_tag :product, "", {placeholder: "Search", class: "search"}
+        
     #wrapper
+      %aside
+        %section#aside_box
+          %h3 Categories
+          %ul
+            - Category.all.each do |category|
+              %li= link_to category.title, category_path(category)
+        %section#aside_box
+          %h3 
+            %span.icon %
+            Your cart
+          %ul
+            - if session[:cart].nil?
+              %li Cart is empty
+            - else
+              - session[:cart].each do  |cart_item|
+                %li
+                  (
+                  = pluralize cart_item.quantity, ") " + cart_item.title
       %section#content
         = yield
-      %aside
-        %h3 Product Categories
-        %section
-          - Category.all.each do |category|
-            %p= link_to category.title, categories_path(category)
-        %h3 
-          %span.icon !
-          Your cart
-        %section
-          - if session[:cart].nil?
-            %p Cart is empty
-          - else
-            - session[:cart].each do  |cart_item|
-              %p
-                (
-                = pluralize cart_item.quantity, ") " + cart_item.title
 
       %footer
         %p Copyright Compuzza 2039
