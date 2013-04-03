@@ -1,24 +1,29 @@
 %h1 Your products
-= form_tag checkout_path, :method => :post do
-  - @items.each do |item|
-    = label_tag item.product.title
-    = text_field_tag item.id, item.quantity
-  %p
-    %b Subtotal
-    $100
-    %br
-    %b GST
-    $10
-    %br
-    %b PST
-    $12
-    %br
-    %b Total
-    $122
-  %h1 Your details
-  = text_field_tag :first_name, "", {placeholder: "First Name"}
-  = text_field_tag :last_name, "", {placeholder: "Last Name"}
-  = text_field_tag :number, "", {placeholder: "Credit Card"}
-  = text_field_tag :month, "", {placeholder: "Month"}
-  = text_field_tag :year, "", {placeholder: "Year"}
-  = text_field_tag :verification_value, "", {placeholder: "Security Code"}
+%ul
+  = form_tag checkout_path, :method => :post do
+    - @items.each do |item|
+      %li
+        %b= label_tag item.product.title
+        %p
+          = text_field_tag item.product.id, item.quantity
+          = button_tag "N", {class: "icon"}
+    %p
+      %b Subtotal
+      $100
+      %br
+      %b GST
+      $10
+      %br
+      %b PST
+      $12
+      %br
+      %b Total
+      $122 
+    %h1 Your details
+    = text_field_tag :first_name, "", {placeholder: "First Name"}
+    = text_field_tag :last_name, "", {placeholder: "Last Name"}
+    = text_field_tag :number, "", {placeholder: "Credit Card"}
+    = text_field_tag :month, "", {placeholder: "Month"}
+    = text_field_tag :year, "", {placeholder: "Year"}
+    = text_field_tag :verification_value, "", {placeholder: "Security Code"}
+    = submit_tag :Purchase

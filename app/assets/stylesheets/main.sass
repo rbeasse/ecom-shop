@@ -137,8 +137,23 @@ body
           @extend .textbox
         textarea
           height: 300px
+        input[type="submit"]
+          @extend .button
+          width: 120px
+        label
+          float: left
+          margin-top: 7px
         p
           text-align: right
+          input
+            width: 45px
+            height: 30px
+          button
+            @extend .button
+            height: 30px
+            padding: 0 10px
+            +linear-gradient(#A42020, darken(#A42020, 10%))
+            margin-left: 5px
       ul
         li 
           list-style: none
