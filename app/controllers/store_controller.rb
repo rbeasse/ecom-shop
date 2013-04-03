@@ -5,7 +5,7 @@ class StoreController < ApplicationController
 
   def search
   	@product_searched_for = params[:product]
-  	@products = Product.where("title LIKE '%#{@product_searched_for}%'")
+  	@products = Product.where("title LIKE ?" ,"'%#{@product_searched_for}%'")
   end
 
   def category

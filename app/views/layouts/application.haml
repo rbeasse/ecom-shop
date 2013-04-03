@@ -32,11 +32,11 @@
               %li Cart is empty
             - else
               - total = 0
-              - session[:cart].each do  |cart_item|
+              - session[:cart].items.each do  |item|
                 %li
                   %b
-                    = cart_item.quantity
-                  = cart_item.product.title
+                    = item.quantity
+                  = Product.find(item.id).title
               %li
                 = link_to "Checkout", checkout_path
                 

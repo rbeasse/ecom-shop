@@ -2,11 +2,13 @@
 %ul
   = form_tag checkout_path, :method => :post do
     - @items.each do |item|
+      - product = Product.find item.id
       %li
-        %b= label_tag item.product.title
+        %b= label_tag product.title
         %p
-          = text_field_tag item.product.id, item.quantity
+          = text_field_tag product.id, item.quantity
           = button_tag "N", {class: "icon"}
+          = button_tag "Update"
     %p
       %b Subtotal
       $100
