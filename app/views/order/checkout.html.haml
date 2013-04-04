@@ -1,26 +1,18 @@
 %h1 Your products
 %ul
-  = form_tag checkout_path, :method => :post do
+  = form_tag invoice_path, :method => :post do
     - @items.each do |item|
       - product = Product.find item.id
       %li
         %b= label_tag product.title
         %p
-          = text_field_tag product.id, item.quantity
+          = item.quantity
           = button_tag "N", {class: "icon"}
-          = button_tag "Update"
+          - @subtotal += product.price
     %p
-      %b Subtotal
-      $100
+      = "$#{@subtotal}"
       %br
-      %b GST
-      $10
-      %br
-      %b PST
-      $12
-      %br
-      %b Total
-      $122 
+      Free shipping
     %h1 Your details
     = text_field_tag :first_name, "", {placeholder: "First Name"}
     = text_field_tag :last_name, "", {placeholder: "Last Name"}

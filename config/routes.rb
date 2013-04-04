@@ -4,6 +4,7 @@ EcomShop::Application.routes.draw do
   match "store/category/:id" => "store#category", as: :category
   match "store/search/" => "store#search", as: :search, via: :get
   match "order/checkout" => "order#checkout", as: :checkout
+  match "order/invoice" => "order#invoice", as: :invoice, via: :post
 
   ActiveAdmin.routes(self)
 

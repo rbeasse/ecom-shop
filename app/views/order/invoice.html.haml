@@ -1,2 +1,31 @@
-%h1 Order#invoice
-%p Find me in app/views/order/invoice.html.haml
+%h1 Invoice #40569
+%ul
+  - @items.each do |item|
+    %li
+      - product = Product.find item.id
+      %b
+        = product.title
+      = "." * (90 - product.title.size)
+      %b= item.quantity
+      x
+      %b= product.price
+      \=
+      %b= item.quantity * product.price
+      - @running_total += item.quantity * product.price
+  %li
+    - gst = 0.07
+    - pst = 0.05
+    - running_total = @running_total.round(2)
+    - gst_value = (running_total * gst).round(2)
+    - pst_value = (running_total * pst).round(2)
+    - grand_total = running_total + pst_value + gst_value
+    
+    %b= "Sub Total    : #{running_total.currency}"
+    %br
+    %b= "PST: (#{(pst * 100).percent}) : #{pst_value.currency}" unless pst.zero?
+    %br
+    %b
+      %u= "GST: (#{(gst * 100).percent}) : #{gst_value.currency}" unless gst.zero?
+
+    %br
+    %b= "Grand Total  : #{grand_total.currency}"
