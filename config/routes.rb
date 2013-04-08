@@ -8,10 +8,11 @@ EcomShop::Application.routes.draw do
   match "about" => "store#about", as: :about
   match "contact" => "store#contact", as: :contact
 
+  root to: "store#index"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  root to: "store#index"
 
 end
