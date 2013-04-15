@@ -1,6 +1,6 @@
-%h1 Your products
+%h1 Your cart
 %ul
-  = form_tag invoice_path, :method => :post do
+  = form_tag checkout_path, :method => :post do
     - @items.each do |item|
       - product = Product.find item.id
       %li
@@ -13,11 +13,14 @@
       = "$#{@subtotal}"
       %br
       Free shipping
-    %h1 Your details
+    %h1 Your information
     = text_field_tag :first_name, "", {placeholder: "First Name"}
     = text_field_tag :last_name, "", {placeholder: "Last Name"}
-    = text_field_tag :number, "", {placeholder: "Credit Card"}
-    = text_field_tag :month, "", {placeholder: "Month"}
-    = text_field_tag :year, "", {placeholder: "Year"}
-    = text_field_tag :verification_value, "", {placeholder: "Security Code"}
+    = text_field_tag :address, "", {placeholder: "Address"}
+    = text_field_tag :city, "", {placeholder: "City"}
+    = select_tag :provinces, options_for_select(@provinces)
+    %h1 Credit card
+    = text_field_tag :number, "", {placeholder: "Credit Card Number", class: "cc"}
+    = text_field_tag :verification_value, "", {placeholder: "Security Code", class: "ccv"}
+    = text_field_tag :month, "", {placeholder: "Expiry Date [MM/YYYY]", class: "MM/YY"}
     = submit_tag :Purchase
