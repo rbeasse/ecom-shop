@@ -23,12 +23,12 @@
         %section#aside_box
           %h3 Categories
           %ul
-            - Category.all.each do |category|
+            - @categories.each do |category|
               %li= link_to category.title, category_path(category)
         %section#aside_box
           %h3 Shopping Cart
           %ul
-            - if session[:cart].nil?
+            - if session[:cart].nil? || !session[:cart].items.any?
               %li Cart is empty
             - else
               - total = 0

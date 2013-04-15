@@ -29,18 +29,21 @@ class OrderController < ApplicationController
     order.hst = province.hst
     order.client = customer
 
-    cart.items.each do |item|
-      ordered_item = OrderedProduct.new
-      product = Product.find(item.id)
-      ordered_item.product = product
-      ordered_item.order = order
-      ordered_item.quantity = product.quantity
-      ordered_item.price = product.price
-      ordered_item.save
-    end
-
     if customer.save && order.save
-      cart.flush
+
+      # Add the line items..
+      cart.items.each do |item|
+        ordered_item = OrderedProduct.new
+        product = Product.find(item.id)
+        ordered_item.product = product
+        ordered_item.order = order
+        ordered_item.quantity = product.quantity
+        ordered_item.price = product.price
+        ordered_item.save
+      end
+
+      cart.empty
+      
       redirect_to root_path, notice: 'Cool' 
     else
       redirect_to checkout_path, notice: 'Errtor' 
