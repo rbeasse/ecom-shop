@@ -8,7 +8,7 @@ EcomShop::Application.routes.draw do
   match "order/invoice" => "order#invoice", as: :invoice, via: :post
   match "about" => "store#about", as: :about
   match "contact" => "store#contact", as: :contact
-
+  match "view/:id" => "products#view", as: :view 
   root to: "store#index"
 
   ActiveAdmin.routes(self)

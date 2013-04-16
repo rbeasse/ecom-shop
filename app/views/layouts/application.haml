@@ -2,9 +2,9 @@
 %html
   %head
     %title Compuzza!
-  = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "application"
-  = csrf_meta_tags
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
   %body
     %header
       %h1= link_to "Compuzza", root_path
@@ -20,12 +20,12 @@
         
     #wrapper
       %aside
-        %section#aside_box
+        %section.aside_box
           %h3 Categories
           %ul
             - @categories.each do |category|
               %li= link_to category.title, category_path(category)
-        %section#aside_box
+        %section.aside_box
           %h3 Shopping Cart
           %ul
             - if session[:cart].nil? || !session[:cart].items.any?
@@ -36,7 +36,7 @@
                 %li
                   %b
                     = item.quantity
-                  = Product.find(item.id).title
+                  = item.title
               %li
                 = link_to "Checkout", checkout_path
                 

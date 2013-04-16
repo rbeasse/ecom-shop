@@ -6,16 +6,13 @@ class StoreController < ApplicationController
 
   def search
   	@product_searched_for = params[:product]
-  	@products = Product.where("title LIKE ?" ,"%#{@product_searched_for}%")
+  	@products = Product.where("title LIKE ?" ,"%#{@product_searched_for}%").page(params[:page]).per(5)
   end
 
   def category
   	@category_id = params[:id]
-  	@products = Product.where(category_id: @category_id)
+  	@products = Product.where(category_id: @category_id).page(params[:page]).per(5)
   	@category = Category.find(@category_id)
-  end
-
-  def view
   end
 
   def about

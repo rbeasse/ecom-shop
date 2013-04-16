@@ -1,0 +1,21 @@
+%h1= @product.title
+%b Description:
+= @product.description
+%br
+%b Price:
+= @product.price
+%br
+%b Quantity:
+= @product.quantity
+%br
+%b Vendor:
+= @product.vendor.title
+%br
+%b Model number:
+= @product.model_number
+%br
+%b Weight:
+= @product.weight
+%br
+
+= image_tag "/assets/" + @product.image unless @product.image.nil?

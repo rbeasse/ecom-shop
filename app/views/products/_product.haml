@@ -2,7 +2,7 @@
 	%b= product.title
 	= "@ $#{product.price}"
 	.links
-		Details 
+		= link_to "Details", view_path(id: product)
 		\| 
 		- if product.quantity < 1 
 			Out of stock

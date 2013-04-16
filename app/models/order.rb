@@ -4,4 +4,10 @@ class Order < ActiveRecord::Base
 
   belongs_to :client
   has_many :ordered_products
+
+  def total
+  	self.ordered_products.inject(0.00) do |total, product|
+  		total + (product.price * product.quantity)
+  	end
+  end
 end
