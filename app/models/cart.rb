@@ -13,6 +13,14 @@ class Cart
   	@items = []
   end
 
+  def remove_item id
+    @items.each do | item |
+      if item.id == id
+        @items.delete(item)
+      end
+    end
+  end 
+
   def new_item? id
   	@items.each do | item |
     	if item.id == id

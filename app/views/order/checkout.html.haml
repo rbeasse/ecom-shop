@@ -6,11 +6,9 @@
       %li
         %b= label_tag product.title
         %p
-          = form_tag delete_path, :method => :post do
-            = item.quantity
-            = hidden_tag :id, item.id
-            = button_tag "N", {class: "icon"}
-          - @subtotal += product.price
+          = item.quantity
+          = link_to "N", delete_path(item.id), {class: "icon"}
+          - @subtotal += product.price * item.quantity
     %p
       = "$#{@subtotal}"
       %br

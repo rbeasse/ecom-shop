@@ -1,5 +1,6 @@
 EcomShop::Application.routes.draw do
   
+  get  "/delete/:id" => "order#delete", as: :delete
   match "order/to_cart" => "order#to_cart", as: :to_cart
   match "store/category/:id" => "store#category", as: :category
   match "store/search/" => "store#search", as: :search, via: :get

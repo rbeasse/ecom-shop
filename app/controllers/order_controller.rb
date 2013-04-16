@@ -92,6 +92,10 @@ class OrderController < ApplicationController
     @order.status = "PAID"
     @order.save
   end
+  def delete
+    session[:cart].remove_item(params[:id])
+    redirect_to checkout_path
+  end
 end
 
 # Where should this go?!
