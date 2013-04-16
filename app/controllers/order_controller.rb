@@ -77,9 +77,9 @@ class OrderController < ApplicationController
     )
 
     if credit_card.valid?
-      response = gateway.authorize((@grand_total.to_i * 100), credit_card, :ip => "127.0.0.1")
+      response = gateway.authorize((@grand_total * 100).to_i, credit_card, :ip => "127.0.0.1")
       if response.success?
-        gateway.capture((@grand_total.to_i * 100), response.authorization)
+        gateway.capture((@grand_total * 100).to_i, response.authorization)
       else
         redirect_to root_path, notice: "#{response.message}"
         return

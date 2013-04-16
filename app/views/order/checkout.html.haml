@@ -23,8 +23,8 @@
     = select_tag     :brand, options_for_select(['amex', 'visa', 'mastercard'])
     = text_field_tag :number             , "", {placeholder: "Card Number"}
     = text_field_tag :verification_value , "", {placeholder: "CCV"}
-    = text_field_tag :month              , "", {placeholder: "Month"}
-    = text_field_tag :year               , "", {placeholder: "Year"}
+    = select_tag     :month, options_for_select({january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12})
+    = select_tag     :year, options_for_select(Time.now.year+1..Time.now.year+15)
     
 
     = submit_tag :Continue

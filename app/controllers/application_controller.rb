@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :gather_info
 
   def gather_info
-  	@categories = Category.all
+  	@categorie = Category.all
   end
 end
