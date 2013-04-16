@@ -1,13 +1,15 @@
 %h1 Your cart
 %ul
-  = form_tag checkout_path, :method => :post do
+  = form_tag invoice_path, :method => :post do
     - @items.each do |item|
       - product = Product.find item.id
       %li
         %b= label_tag product.title
         %p
-          = item.quantity
-          = button_tag "N", {class: "icon"}
+          = form_tag delete_path, :method => :post do
+            = item.quantity
+            = hidden_tag :id, item.id
+            = button_tag "N", {class: "icon"}
           - @subtotal += product.price
     %p
       = "$#{@subtotal}"
@@ -19,8 +21,12 @@
     = text_field_tag :address, "", {placeholder: "Address"}
     = text_field_tag :city, "", {placeholder: "City"}
     = select_tag :provinces, options_for_select(@provinces)
-    %h1 Credit card
-    = text_field_tag :number, "", {placeholder: "Credit Card Number", class: "cc"}
-    = text_field_tag :verification_value, "", {placeholder: "Security Code", class: "ccv"}
-    = text_field_tag :month, "", {placeholder: "Expiry Date [MM/YYYY]", class: "MM/YY"}
-    = submit_tag :Purchase
+    %h1 Credit Card
+    = select_tag     :brand, options_for_select(['amex', 'visa', 'mastercard'])
+    = text_field_tag :number             , "", {placeholder: "Card Number"}
+    = text_field_tag :verification_value , "", {placeholder: "CCV"}
+    = text_field_tag :month              , "", {placeholder: "Month"}
+    = text_field_tag :year               , "", {placeholder: "Year"}
+    
+
+    = submit_tag :Continue

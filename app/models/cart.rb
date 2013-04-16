@@ -22,5 +22,4 @@ class Cart
     end
     true
   end
-
 end

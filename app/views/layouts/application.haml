@@ -17,7 +17,12 @@
           #search_button.icon
             O
           = text_field_tag :product, "", {placeholder: "Search", class: "search"}
-        
+
+    - flash.each do |key, msg|
+      %div= key
+      %p= link_to_function 'X', "Effect.Fade('#{key}')"
+      %p= msg
+
     #wrapper
       %aside
         %section.aside_box
